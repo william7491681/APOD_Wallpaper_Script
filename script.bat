@@ -1,0 +1,1 @@
+c:\Users\willi\AppData\Local\Programs\Python\Python311\python.exe c:\Users\willi\Documents\coding_projects\APOD_Wallpaper_Script\script.py %*
