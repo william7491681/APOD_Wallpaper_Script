@@ -5,12 +5,13 @@ from PIL import Image
 import datetime
 import ctypes
 import json
+from screenInfo import monitorWidth, monitorHeight, fileSavePath
 
-with open("userDefinedVariables.json", "r") as userDefinedVariables:
-  userDefinedVariables = json.load(userDefinedVariables)
-  monitorWidth = userDefinedVariables['MONITOR_WIDTH']
-  monitorHeight = userDefinedVariables['MONITOR_HEIGHT']
-  fileSavePath = userDefinedVariables['FILE_SAVE_PATH']
+#with open("userDefinedVariables.json", "r") as userDefinedVariables:
+#  userDefinedVariables = json.load(userDefinedVariables)
+#  monitorWidth = userDefinedVariables['MONITOR_WIDTH']
+#  monitorHeight = userDefinedVariables['MONITOR_HEIGHT']
+#  fileSavePath = userDefinedVariables['FILE_SAVE_PATH']
 
 today = datetime.datetime.now().strftime("%Y-%m-%d").replace("/", "-")
 eightDaysAgo = (datetime.datetime.now() - datetime.timedelta(days=8)).strftime("%Y-%m-%d").replace("/", "-")
