@@ -9,4 +9,4 @@ for monitor in get_monitors:
 
 monitorWidth = width
 monitorHeight = height
-fileSavePath = path
+fileSavePath = path.absolute()
