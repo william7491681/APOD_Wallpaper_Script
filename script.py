@@ -3,14 +3,13 @@ from dotenv import load_dotenv
 import os
 from PIL import Image
 import datetime
-import ctypes
 import json
 
 with open("userDefinedVariables.json", "r") as userDefinedVariables:
   userDefinedVariables = json.load(userDefinedVariables)
   monitorWidth = userDefinedVariables['MONITOR_WIDTH']
   monitorHeight = userDefinedVariables['MONITOR_HEIGHT']
-  fileSavePath = userDefinedVariables['FILE_SAVE_PATH']
+  imageFolder = userDefinedVariables['IMAGE_FOLDER']
 
 today = datetime.datetime.now().strftime("%Y-%m-%d").replace("/", "-")
 eightDaysAgo = (datetime.datetime.now() - datetime.timedelta(days=8)).strftime("%Y-%m-%d").replace("/", "-")
@@ -47,19 +46,24 @@ for i in response:
     imgs.append(Image.new('RGB', (monitorWidth//3, monitorHeight//3)))
 
 finalImg = Image.new('RGB', (monitorWidth, monitorHeight))
+
+oneThirdWidth = monitorWidth//3
+twoThirdsWidth = monitorWidth//3*2
+oneThirdHeight = monitorHeight//3
+twoThirdsHeight = monitorHeight//3*2
+
 finalImg.paste(imgs[0], (0, 0))
-finalImg.paste(imgs[1], (640, 0))
-finalImg.paste(imgs[2], (1280, 0))
+finalImg.paste(imgs[1], (oneThirdWidth, 0))
+finalImg.paste(imgs[2], (twoThirdsWidth, 0))
 
-finalImg.paste(imgs[3], (0, 360))
-finalImg.paste(imgs[4], (640, 360))
-finalImg.paste(imgs[5], (1280, 360))
+finalImg.paste(imgs[3], (0, oneThirdHeight))
+finalImg.paste(imgs[4], (oneThirdWidth, oneThirdHeight))
+finalImg.paste(imgs[5], (twoThirdsWidth, oneThirdHeight))
 
-finalImg.paste(imgs[6], (0, 720))
-finalImg.paste(imgs[7], (640, 720))
-finalImg.paste(imgs[8], (1280, 720))
+finalImg.paste(imgs[6], (0, twoThirdsHeight))
+finalImg.paste(imgs[7], (oneThirdWidth, twoThirdsHeight))
+finalImg.paste(imgs[8], (twoThirdsWidth, twoThirdsHeight))
 
-if os.path.exists(fileSavePath):
-  os.remove(fileSavePath)
-finalImg.save(fileSavePath)
-ctypes.windll.user32.SystemParametersInfoW(20, 0, fileSavePath , 0)
+if os.path.exists(f'{imageFolder}\collage.jpg'):
+  os.remove(f'{imageFolder}\collage.jpg')
+finalImg.save(f'{imageFolder}\collage.jpg')
