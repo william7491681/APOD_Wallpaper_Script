@@ -29,8 +29,8 @@ Windows was a pain to deal with in general. I tried many different ways of getti
 * On the `Actions` tab:
   * Click the new button, and select `Start a Program` as the action from the dropdown menu at the top.
   * In the `Program/script` section, enter `powershell`
-  * In the `Add Arguments` section, enter `-File` and then the path to the powershell script included in this repo (on my machine this is
-  `-File C:\Users\willi\Documents\coding_projects\APOD_Wallpaper_Script\runScript.ps1`)
+  * In the `Add Arguments` section, enter `-WindowStyle Hidden -File` and then the path to the powershell script included in this repo (on my machine this is
+  `-WindowStyle Hidden -File C:\Users\willi\Documents\coding_projects\APOD_Wallpaper_Script\runScript.ps1`)
 * If the script is not working for you, try the following:
   * Firstly, ensure that you did not make any changes other than the ones listed above
   * On the `Conditions` tab, uncheck the box that says `Start the task only if the computer is on AC power`. If on a laptop, this may be the reason why the script fails to run.
